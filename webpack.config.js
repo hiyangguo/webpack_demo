@@ -1,8 +1,9 @@
 var path = require('path');
 var webpack = require('webpack');
 var definePlugin = new webpack.DefinePlugin({
-    __DEV__: JSON.stringify(JSON.parse(process.env.npm_package_config_build_dev || 'false')),
+    __DEV__: JSON.stringify(JSON.parse(process.env.npm_package_config_build_dev || 'false'))
 });
+var websitePath = process.env.npm_package_config_website_path || '/';
 
 module.exports = {
     //入口文件
@@ -11,6 +12,8 @@ module.exports = {
     },
     //输出
     output: {
+        //使用绝对路径
+        publicPath: websitePath,
         //路径
         path: path.join(__dirname, 'dist'),
         //文件名 [name].js 以源文件名输出
