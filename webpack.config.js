@@ -35,15 +35,24 @@ module.exports = {
             //排除的文件夹
             exclude: /node_modules/
         }, {
+            //[less loader]{@link https://github.com/webpack/less-loader}
             test: /\.less$/,
             //加载器 多个加载器用!隔开
-            loader: 'style-loader!css-loader!less-loader'
+            loader: 'style!css!less'
         }, {
+            //[css loader]{@link https://github.com/webpack/css-loader}
             test: /\.css$/,
-            loader: 'style-loader!css-loader'
+            loader: 'style!css'
         }, {
-            test: /\.(png|jpg)$/,
-            loader: 'url-loader?limit=8192'// 内联 base64 URLs, 限定 <=8k 的图片, 其他的用 URL
+            test: /\.(png|jpe?g|gif)$/,
+            // 内联 base64 URLs, 限定 <=8k 的图片, 其他的用 URL
+            loader: 'url-loader?limit=8192'
+        }, {
+            test: /\.ico$/,
+            loader: 'file?name=[name].[ext]'
+        }, {
+            test: /\.eot$|\.ttf$|\.svg$|\.woff2?$/,
+            loader: 'file?name=[name].[ext]'
         }]
     },
     plugins: [definePlugin]
