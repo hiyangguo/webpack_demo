@@ -1,9 +1,11 @@
+export Button from './Button';
+
 //引入less文件
 require('./less/index.less');
 
 //引入css
 require('./css/test.css');
-export Button from './Button';
+
 
 //引入json
 //使用[json-loader]{@link https://github.com/webpack/json-loader}
